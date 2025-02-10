@@ -1,11 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/config"
 	"github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes"
+	"github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/pkg/logging"
 	"github.com/julienschmidt/httprouter"
-	"log"
 	"net/http"
 	"time"
 )
@@ -13,15 +12,17 @@ import (
 func main() {
 	router := httprouter.New()
 
+	logger := logging.GetLogger()
+
 	cfg := config.GetConfig()
 
-	handler := routes.NewHandler(cfg)
+	handler := routes.NewHandler(cfg, logger)
 	handler.Routes(router)
 
-	start(router, cfg)
+	start(router, cfg, logger)
 }
 
-func start(router *httprouter.Router, cfg *config.Config) {
+func start(router *httprouter.Router, cfg *config.Config, logger *logging.Logger) {
 
 	const WRI = 15 * time.Second
 
@@ -33,6 +34,6 @@ func start(router *httprouter.Router, cfg *config.Config) {
 		IdleTimeout:  WRI,
 	}
 
-	fmt.Println("Server started....")
-	log.Fatal(server.ListenAndServe())
+	logger.Infof("Server started %v", cfg.Port)
+	logger.Fatal(server.ListenAndServe())
 }

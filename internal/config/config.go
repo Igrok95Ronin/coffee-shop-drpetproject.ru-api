@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+	"github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/pkg/logging"
 	"github.com/ilyakaznacheev/cleanenv"
 	"sync"
 )
@@ -30,14 +31,14 @@ var instance *Config
 var once sync.Once
 
 func GetConfig() *Config {
-	//logger := logging.GetLogger()
+	logger := logging.GetLogger()
 	once.Do(func() {
 		instance = &Config{}
 
 		if err := cleanenv.ReadConfig("./config.yml", instance); err != nil {
 			help, _ := cleanenv.GetDescription(instance, nil)
-			//logger.Info(help)
-			//logger.Fatal(err)
+			logger.Info(help)
+			logger.Fatal(err)
 			fmt.Println(help)
 		}
 	})
