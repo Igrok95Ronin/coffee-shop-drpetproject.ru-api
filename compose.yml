@@ -1,0 +1,24 @@
+services:
+  dbCoffeeShop:
+    restart: always
+    image: postgres:15.2
+    environment:
+      POSTGRES_USER: coffeeShopSuperUser
+      POSTGRES_PASSWORD: coffeeShopSuperPassword
+      POSTGRES_DB: coffeeShopDB
+    ports:
+      - 5434:5432
+    volumes:
+      - pgdatacoffeeshop:/var/lib/postgresql/data
+      - ./migrations/coffeeshop/createtable.sql:/docker-entrypoint-initdb.d/createtable.sql
+      - ./migrations/coffeeshop/inserttable.sql:/docker-entrypoint-initdb.d/inserttable.sql
+    networks:
+      - drpetproject-network
+
+volumes:
+  pgdatacoffeeshop:
+    name: pgdatacoffeeshop
+
+networks:
+  drpetproject-network:
+    driver: bridge
