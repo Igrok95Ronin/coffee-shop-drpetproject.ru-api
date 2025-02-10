@@ -2,7 +2,7 @@ package httperror
 
 import (
 	"encoding/json"
-	"github.com/Igrok95Ronin/todolistjwt.drpetproject.ru-api.git/pkg/logging"
+	"github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/pkg/logging"
 	"net/http"
 )
 
