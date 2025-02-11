@@ -2,3 +2,4 @@
 /.vscode/
 coffeeshop.exe
 config.yml
+.env

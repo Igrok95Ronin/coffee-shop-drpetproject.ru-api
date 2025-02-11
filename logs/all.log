@@ -2,3 +2,74 @@
 [36mINFO[0m[2025-02-10T20:12:16+03:00]main.go:37 main.start() Server started :8082                         
 [36mINFO[0m[2025-02-10T20:38:06+03:00]main.go:45 main.start() Server started :8082                         
 [36mINFO[0m[2025-02-10T20:40:48+03:00]main.go:45 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-10T21:36:55+03:00]main.go:45 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T11:46:34+03:00]main.go:45 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T12:08:46+03:00]main.go:45 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T12:09:03+03:00]main.go:45 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T12:11:38+03:00]main.go:45 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T12:24:22+03:00]config.go:43 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/config.GetConfig.func1() Environment variables:
+  JWT_ACCESS string
+    	
+  JWT_REFRESH string
+    	
+  PORT string
+    	
+  POSTGRES_DB string
+    	
+  POSTGRES_HOST string
+    	
+  POSTGRES_PASSWORD string
+    	
+  POSTGRES_PORT int64
+    	
+  POSTGRES_USER string
+    	
+  SSL_MODE string
+    	
+  TIME_ZONE string
+    	 
+[31mFATA[0m[2025-02-11T12:24:22+03:00]config.go:44 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/config.GetConfig.func1() config file parsing error: yaml: line 3: did not find expected key 
+[36mINFO[0m[2025-02-11T12:24:46+03:00]config.go:43 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/config.GetConfig.func1() Environment variables:
+  JWT_ACCESS string
+    	
+  JWT_REFRESH string
+    	
+  PORT string
+    	
+  POSTGRES_DB string
+    	
+  POSTGRES_HOST string
+    	
+  POSTGRES_PASSWORD string
+    	
+  POSTGRES_PORT int64
+    	
+  POSTGRES_USER string
+    	
+  SSL_MODE string
+    	
+  TIME_ZONE string
+    	 
+[31mFATA[0m[2025-02-11T12:24:46+03:00]config.go:44 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/config.GetConfig.func1() config file parsing error: yaml: line 3: did not find expected key 
+[36mINFO[0m[2025-02-11T12:30:45+03:00]main.go:45 main.start() Server started 8082                          
+[31mFATA[0m[2025-02-11T12:30:45+03:00]main.go:46 main.start() listen tcp: address 8082: missing port in address 
+[36mINFO[0m[2025-02-11T12:32:08+03:00]main.go:45 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T12:32:39+03:00]main.go:45 main.start() Server started :8081                         
+[36mINFO[0m[2025-02-11T12:34:43+03:00]main.go:45 main.start() Server started :8081                         
+[36mINFO[0m[2025-02-11T12:34:54+03:00]main.go:45 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T12:37:03+03:00]main.go:45 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T12:42:45+03:00]main.go:45 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T12:43:08+03:00]main.go:45 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T15:37:29+03:00]main.go:45 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T15:37:52+03:00]main.go:45 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T15:38:49+03:00]main.go:45 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T15:39:22+03:00]main.go:45 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T15:42:50+03:00]main.go:45 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T15:43:15+03:00]main.go:45 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T15:44:37+03:00]main.go:45 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T15:45:11+03:00]main.go:45 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T15:46:08+03:00]main.go:45 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T15:48:26+03:00]main.go:45 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T15:50:14+03:00]main.go:45 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T15:51:50+03:00]main.go:45 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T15:54:23+03:00]main.go:45 main.start() Server started :8082                         

@@ -25,5 +25,6 @@ func NewHandler(cfg *config.Config, logger *logging.Logger, db *gorm.DB) handler
 }
 
 func (h *handler) Routes(router *httprouter.Router) {
+	router.POST("/send-sms", h.sendSMS) // Получить SMS
 	router.GET("/", h.Home)
 }
