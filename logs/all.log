@@ -150,3 +150,15 @@
 [36mINFO[0m[2025-02-11T20:46:51+03:00]sendsms.go:90 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
 [36mINFO[0m[2025-02-11T20:47:56+03:00]main.go:58 main.start() Server started :8082                         
 [36mINFO[0m[2025-02-11T20:47:58+03:00]sendsms.go:90 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-11T20:48:47+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T20:48:51+03:00]sendsms.go:90 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-11T21:27:22+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T21:27:24+03:00]sendsms.go:108 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-11T21:28:23+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T21:28:26+03:00]sendsms.go:108 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-11T21:31:20+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T21:31:23+03:00]sendsms.go:108 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-11T21:32:14+03:00]sendsms.go:108 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-11T21:32:22+03:00]sendsms.go:108 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-11T21:33:15+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T21:33:17+03:00]sendsms.go:109 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          

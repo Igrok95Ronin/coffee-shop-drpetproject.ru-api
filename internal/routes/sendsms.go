@@ -18,6 +18,7 @@ import (
 const (
 	BLACKLIST = "blacklist:phone:"
 	ATTEMPTS  = "attempts:phone:"
+	VERIFIED  = "verified:phone:"
 )
 
 // Получить SMS
@@ -58,6 +59,23 @@ func (h *handler) sendSMS(w http.ResponseWriter, r *http.Request, _ httprouter.P
 		return
 	}
 
+	// Проверяем есть ли пользователь с таким номером в бд
+	exists, err := WeCheckThereUserWithThisNumber(h, w, phoneNumber)
+	if err != nil {
+		h.logger.Error(err)
+		return
+	} else if exists {
+		h.logger.Error(err)
+		httperror.WriteJSONError(w, "Такой номер уже зарегистрирован", err, http.StatusBadRequest)
+		return
+	}
+
+	// Если номер подтвержден то добавляем его на 1 час в кеш
+	//if err := checksNumberConfirmed(h, w, phoneNumber); err != nil {
+	//	h.logger.Error(err)
+	//	return
+	//}
+
 	fmt.Println("Форматированный номер для SMSC:", phoneNumber)
 	w.WriteHeader(http.StatusOK)
 }
@@ -78,7 +96,6 @@ func formatPhoneNumber(phone string) string {
 
 // Проверка в черном списке
 func blacklistRedis(h *handler, w http.ResponseWriter, phoneNumber string) error {
-
 	rdb := h.rdb
 
 	// Проверка соединения (ping)
@@ -89,6 +106,7 @@ func blacklistRedis(h *handler, w http.ResponseWriter, phoneNumber string) error
 	}
 	h.logger.Info("Ответ от Redis:", pong)
 
+	// Проверка, есть ли номер в черном списке
 	exists, err := rdb.Exists(h.ctx, BLACKLIST+phoneNumber).Result()
 	if err != nil {
 		httperror.WriteJSONError(w, "Ошибка при проверке ключа", err, http.StatusInternalServerError)
@@ -96,12 +114,13 @@ func blacklistRedis(h *handler, w http.ResponseWriter, phoneNumber string) error
 	}
 
 	if exists > 0 {
-		httperror.WriteJSONError(w, fmt.Sprintf("Данный номер %s заблокирован на 24 часа, за частые повторы", phoneNumber), err, http.StatusBadRequest)
-		return err
+		httperror.WriteJSONError(w, fmt.Sprintf("Данный номер %s заблокирован на 24 часа, за частые повторы", phoneNumber), nil, http.StatusBadRequest)
+		return fmt.Errorf("номер %s в черном списке", phoneNumber)
 	}
 
 	// Увеличивает счетчик повторов для номера
-	if err = IncreasesRepeatCounterForNumber(h, rdb, phoneNumber); err != nil {
+	if err := IncreasesRepeatCounterForNumber(h, rdb, phoneNumber); err != nil {
+		h.logger.Error("Ошибка при увеличении счетчика:", err)
 		return err
 	}
 
@@ -148,7 +167,7 @@ func IncreasesRepeatCounterForNumber(h *handler, rdb *redis.Client, phoneNumber 
 		}
 	} else {
 		// Если нету то добавляем счетчик со значение 1
-		if err = rdb.Set(h.ctx, ATTEMPTS+phoneNumber, 1, 1*time.Hour).Err(); err != nil {
+		if err = rdb.Set(h.ctx, ATTEMPTS+phoneNumber, 1, 24*time.Hour).Err(); err != nil {
 			h.logger.Error(err)
 			return err
 		}
@@ -156,3 +175,23 @@ func IncreasesRepeatCounterForNumber(h *handler, rdb *redis.Client, phoneNumber 
 
 	return nil
 }
+
+// Проверяем есть ли пользователь с таким номером в бд
+func WeCheckThereUserWithThisNumber(h *handler, w http.ResponseWriter, phoneNumber string) (bool, error) {
+
+	var count int64
+
+	err := h.db.Table("users").Where("phone_number = ?", phoneNumber).Count(&count).Error
+	if err != nil {
+		h.logger.Error(err)
+		return false, err
+	}
+
+	return count > 0, nil
+}
+
+// Если номер подтвержден то добавляем его на 1 час в кеш
+//func checksNumberConfirmed(h *handler, w http.ResponseWriter, phoneNumber string) error {
+//
+//	return nil
+//}
