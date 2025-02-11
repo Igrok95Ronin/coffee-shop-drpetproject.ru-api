@@ -10,3 +10,8 @@ type Users struct {
 	RefreshToken string    `json:"refreshToken" gorm:"column:refresh_token"` // Токен обновления (может быть NULL)
 	CreatedAt    time.Time `gorm:"column:created_at"`                        // Дата создания
 }
+
+// Структура для регистрации
+type RegUsers struct {
+	PhoneNumber string `yaml:"phoneNumber"`
+}

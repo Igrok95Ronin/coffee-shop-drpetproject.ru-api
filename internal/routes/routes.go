@@ -1,10 +1,12 @@
 package routes
 
 import (
+	"context"
 	"github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/config"
 	"github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/handlers"
 	"github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/pkg/logging"
 	"github.com/julienschmidt/httprouter"
+	"github.com/redis/go-redis/v9"
 	"gorm.io/gorm"
 )
 
@@ -14,13 +16,17 @@ type handler struct {
 	cfg    *config.Config
 	logger *logging.Logger
 	db     *gorm.DB
+	ctx    context.Context
+	rdb    *redis.Client
 }
 
-func NewHandler(cfg *config.Config, logger *logging.Logger, db *gorm.DB) handlers.Handler {
+func NewHandler(cfg *config.Config, logger *logging.Logger, db *gorm.DB, ctx context.Context, rdb *redis.Client) handlers.Handler {
 	return &handler{
 		cfg,
 		logger,
 		db,
+		ctx,
+		rdb,
 	}
 }
 

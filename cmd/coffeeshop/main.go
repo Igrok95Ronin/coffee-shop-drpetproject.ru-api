@@ -1,10 +1,12 @@
 package main
 
 import (
+	"context"
 	"github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/config"
 	"github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes"
 	"github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/pkg/logging"
 	"github.com/julienschmidt/httprouter"
+	"github.com/redis/go-redis/v9"
 	"log"
 	"net/http"
 	"time"
@@ -18,13 +20,24 @@ func main() {
 	}
 	defer sqlDB.Close()
 
+	ctx := context.Background()
+
 	router := httprouter.New()
 
 	logger := logging.GetLogger()
 
 	cfg := config.GetConfig()
 
-	handler := routes.NewHandler(cfg, logger, db)
+	// Создаём клиент Redis.
+	// Address: "localhost:6379" – если мы запускаем Go-код на той же машине, что и Docker.
+	// Password: "secret_password" – тот же пароль, что указан в docker-compose.yml
+	rdb := redis.NewClient(&redis.Options{
+		Addr:     "localhost:6379",   // Адрес, где запущен Redis
+		Password: cfg.Redis.Password, // Пароль, заданный в docker-compose.yml
+		DB:       0,                  // Номер базы (по умолчанию 0)
+	})
+
+	handler := routes.NewHandler(cfg, logger, db, ctx, rdb)
 	handler.Routes(router)
 
 	start(router, cfg, logger)
