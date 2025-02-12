@@ -24,6 +24,10 @@ type Config struct {
 	Redis struct {
 		Password string `yaml:"password"`
 	} `yaml:"redis"`
+	SMSC struct {
+		Login    string `yaml:"login"`
+		Password string `yaml:"password"`
+	} `yaml:"smsc"`
 	Token struct {
 		Access  string `yaml:"access" env:"JWT_ACCESS"`   // Токен доступа
 		Refresh string `yaml:"refresh" env:"JWT_REFRESH"` // Refresh-токен
@@ -76,6 +80,13 @@ func overrideWithEnv(cfg *Config) {
 
 	if redisPassword := os.Getenv("REDIS_PASSWORD"); redisPassword != "" {
 		cfg.Redis.Password = redisPassword
+	}
+
+	if smscLogin := os.Getenv("SMSC_LOGIN"); smscLogin != "" {
+		cfg.SMSC.Login = smscLogin
+	}
+	if smscPassword := os.Getenv("SMSC_PASSWORD"); smscPassword != "" {
+		cfg.SMSC.Password = smscPassword
 	}
 
 	if access := os.Getenv("JWT_ACCESS"); access != "" {

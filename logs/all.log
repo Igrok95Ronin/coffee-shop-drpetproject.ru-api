@@ -162,3 +162,46 @@
 [36mINFO[0m[2025-02-11T21:32:22+03:00]sendsms.go:108 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
 [36mINFO[0m[2025-02-11T21:33:15+03:00]main.go:58 main.start() Server started :8082                         
 [36mINFO[0m[2025-02-11T21:33:17+03:00]sendsms.go:109 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-11T21:36:51+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-11T21:36:53+03:00]sendsms.go:108 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[31mERRO[0m[2025-02-11T21:36:53+03:00]sendsms.go:58 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).sendSMS() номер 79635951523 в черном списке            
+[36mINFO[0m[2025-02-11T21:37:09+03:00]sendsms.go:108 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[31mERRO[0m[2025-02-11T21:37:09+03:00]sendsms.go:58 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).sendSMS() номер 79635951523 в черном списке            
+[36mINFO[0m[2025-02-11T21:37:17+03:00]sendsms.go:108 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-11T21:37:21+03:00]sendsms.go:108 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-11T21:37:22+03:00]sendsms.go:108 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-11T21:37:23+03:00]sendsms.go:108 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-11T21:37:24+03:00]sendsms.go:108 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[31mERRO[0m[2025-02-11T21:37:24+03:00]sendsms.go:58 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).sendSMS() номер 79635951525 в черном списке            
+[36mINFO[0m[2025-02-12T14:25:17+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-12T14:25:31+03:00]sendsms.go:107 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-12T14:25:41+03:00]sendsms.go:107 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-12T14:25:46+03:00]sendsms.go:107 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-12T14:25:52+03:00]sendsms.go:107 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-12T14:25:53+03:00]sendsms.go:107 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[31mERRO[0m[2025-02-12T14:25:53+03:00]sendsms.go:58 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).sendSMS() номер 79635951525 в черном списке            
+[36mINFO[0m[2025-02-12T14:38:36+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-12T14:38:39+03:00]sendsms.go:108 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[31mERRO[0m[2025-02-12T14:38:39+03:00]sendsms.go:59 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).sendSMS() номер 79635951525 в черном списке            
+[36mINFO[0m[2025-02-12T14:38:46+03:00]sendsms.go:108 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-12T14:38:51+03:00]sendsms.go:108 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-12T14:44:44+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-12T14:44:54+03:00]sendsms.go:110 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[31mERRO[0m[2025-02-12T14:44:54+03:00]sendsms.go:61 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).sendSMS() номер 79635951523 в черном списке            
+[36mINFO[0m[2025-02-12T14:47:22+03:00]sendsms.go:110 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-12T14:50:56+03:00]sendsms.go:110 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-12T14:56:34+03:00]sendsms.go:110 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-12T14:56:41+03:00]sendsms.go:110 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-12T14:56:45+03:00]sendsms.go:110 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-12T14:56:49+03:00]sendsms.go:110 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[31mERRO[0m[2025-02-12T14:56:49+03:00]sendsms.go:61 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).sendSMS() номер 79287453726 в черном списке            
+[36mINFO[0m[2025-02-12T14:57:04+03:00]sendsms.go:110 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[31mERRO[0m[2025-02-12T14:57:04+03:00]sendsms.go:61 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).sendSMS() номер 79287453726 в черном списке            
+[36mINFO[0m[2025-02-12T14:57:16+03:00]sendsms.go:110 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[31mERRO[0m[2025-02-12T14:57:16+03:00]sendsms.go:61 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).sendSMS() номер 79287453726 в черном списке            
+[36mINFO[0m[2025-02-12T15:01:19+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-12T15:01:33+03:00]sendsms.go:110 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-12T15:02:44+03:00]sendsms.go:110 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-12T15:26:18+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-12T15:26:20+03:00]sendsms.go:110 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-12T15:26:20+03:00]sendsms.go:241 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.sendSmsForConfirmation() map[error:message is denied error_code:6 id:21] 

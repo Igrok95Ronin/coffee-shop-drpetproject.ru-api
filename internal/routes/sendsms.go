@@ -8,7 +8,10 @@ import (
 	"github.com/julienschmidt/httprouter"
 	"github.com/redis/go-redis/v9"
 	"html/template"
+	"io"
+	"math/rand"
 	"net/http"
+	"net/url"
 	"regexp"
 	"strconv"
 	"strings"
@@ -60,7 +63,7 @@ func (h *handler) sendSMS(w http.ResponseWriter, r *http.Request, _ httprouter.P
 	}
 
 	// Проверяем есть ли пользователь с таким номером в бд
-	exists, err := WeCheckThereUserWithThisNumber(h, w, phoneNumber)
+	exists, err := WeCheckThereUserWithThisNumber(h, phoneNumber)
 	if err != nil {
 		h.logger.Error(err)
 		return
@@ -70,11 +73,11 @@ func (h *handler) sendSMS(w http.ResponseWriter, r *http.Request, _ httprouter.P
 		return
 	}
 
-	// Если номер подтвержден то добавляем его на 1 час в кеш
-	//if err := checksNumberConfirmed(h, w, phoneNumber); err != nil {
-	//	h.logger.Error(err)
-	//	return
-	//}
+	// Отправить смс для подтверждения
+	if err := sendSmsForConfirmation(h, w, phoneNumber); err != nil {
+		h.logger.Error(err)
+		return
+	}
 
 	fmt.Println("Форматированный номер для SMSC:", phoneNumber)
 	w.WriteHeader(http.StatusOK)
@@ -177,7 +180,7 @@ func IncreasesRepeatCounterForNumber(h *handler, rdb *redis.Client, phoneNumber 
 }
 
 // Проверяем есть ли пользователь с таким номером в бд
-func WeCheckThereUserWithThisNumber(h *handler, w http.ResponseWriter, phoneNumber string) (bool, error) {
+func WeCheckThereUserWithThisNumber(h *handler, phoneNumber string) (bool, error) {
 
 	var count int64
 
@@ -190,8 +193,50 @@ func WeCheckThereUserWithThisNumber(h *handler, w http.ResponseWriter, phoneNumb
 	return count > 0, nil
 }
 
-// Если номер подтвержден то добавляем его на 1 час в кеш
-//func checksNumberConfirmed(h *handler, w http.ResponseWriter, phoneNumber string) error {
-//
-//	return nil
-//}
+// Генерация 4-значного кода (например, "4287").
+func generateVerificationCode() string {
+	rand.Seed(time.Now().UnixNano())
+	code := rand.Intn(10000) // число от 0 до 9999
+	return fmt.Sprintf("%04d", code)
+}
+
+// Отправить смс для подтверждения
+func sendSmsForConfirmation(h *handler, w http.ResponseWriter, phoneNumber string) error {
+	login := h.cfg.SMSC.Login       // Ваш логин на SMSC.ru
+	password := h.cfg.SMSC.Password // Ваш пароль на SMSC.ru
+
+	// Создаем параметры запроса
+	params := url.Values{}
+	params.Set("login", login)
+	params.Set("psw", password)
+	params.Set("phones", phoneNumber)
+	params.Set("mes", generateVerificationCode())
+	params.Set("fmt", "3") // Формат ответа: 3 - JSON
+
+	// Отправляем POST-запрос к API SMSC.ru
+	resp, err := http.PostForm("https://smsc.ru/sys/send.php", params)
+	if err != nil {
+		httperror.WriteJSONError(w, "ошибка при отправке запроса", err, http.StatusInternalServerError)
+		return err
+	}
+	defer resp.Body.Close()
+
+	// Читаем ответ сервера
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		httperror.WriteJSONError(w, "ошибка при чтении ответа", err, http.StatusInternalServerError)
+		return err
+	}
+
+	// Декодируем JSON-ответ
+	var result map[string]interface{}
+	err = json.Unmarshal(body, &result)
+	if err != nil {
+		httperror.WriteJSONError(w, "ошибка при декодировании JSON", err, http.StatusInternalServerError)
+		return err
+	}
+
+	h.logger.Info(result)
+
+	return nil
+}
