@@ -11,7 +11,14 @@ type Users struct {
 	CreatedAt    time.Time `gorm:"column:created_at"`                        // Дата создания
 }
 
-// Структура для регистрации
-type RegUsers struct {
+// Структура для sms регистрации
+type SMSRegUsers struct {
 	PhoneNumber string `yaml:"phoneNumber"`
+}
+
+// Структура для регистрации
+type Register struct {
+	PhoneNumber string `yaml:"phoneNumber"`
+	Code        string `yaml:"code"`
+	Password    string `yaml:"password"`
 }

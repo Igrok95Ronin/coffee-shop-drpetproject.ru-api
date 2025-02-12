@@ -26,9 +26,9 @@ const (
 
 // Получить SMS
 func (h *handler) sendSMS(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	var regUser models.RegUsers
+	var smsRegUser models.SMSRegUsers
 
-	if err := json.NewDecoder(r.Body).Decode(&regUser); err != nil {
+	if err := json.NewDecoder(r.Body).Decode(&smsRegUser); err != nil {
 		httperror.WriteJSONError(w, "Ошибка декодирования в json", err, http.StatusBadRequest)
 		h.logger.Errorf("Ошибка декодирования в json: %s", err)
 		return
@@ -36,7 +36,7 @@ func (h *handler) sendSMS(w http.ResponseWriter, r *http.Request, _ httprouter.P
 
 	// Убираем пробелы и экранируем спец символы
 	var (
-		phoneNumber = template.HTMLEscapeString(strings.TrimSpace(regUser.PhoneNumber))
+		phoneNumber = template.HTMLEscapeString(strings.TrimSpace(smsRegUser.PhoneNumber))
 	)
 
 	// Проверяем длину
@@ -79,7 +79,6 @@ func (h *handler) sendSMS(w http.ResponseWriter, r *http.Request, _ httprouter.P
 		return
 	}
 
-	fmt.Println("Форматированный номер для SMSC:", phoneNumber)
 	w.WriteHeader(http.StatusOK)
 }
 

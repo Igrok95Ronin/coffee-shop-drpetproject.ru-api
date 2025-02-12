@@ -32,5 +32,7 @@ func NewHandler(cfg *config.Config, logger *logging.Logger, db *gorm.DB, ctx con
 
 func (h *handler) Routes(router *httprouter.Router) {
 	router.POST("/send-sms", h.sendSMS) // Получить SMS
+	// Регистрация (создание нового пользователя)
+	router.POST("/register", h.Register)
 	router.GET("/", h.Home)
 }

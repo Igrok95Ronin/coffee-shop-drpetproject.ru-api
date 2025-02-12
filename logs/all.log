@@ -211,3 +211,28 @@
 [36mINFO[0m[2025-02-12T15:40:38+03:00]main.go:58 main.start() Server started :8082                         
 [36mINFO[0m[2025-02-12T15:40:44+03:00]sendsms.go:110 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
 [36mINFO[0m[2025-02-12T15:40:44+03:00]sendsms.go:240 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.sendSmsForConfirmation() map[error:message is denied error_code:6 id:23] 
+[36mINFO[0m[2025-02-12T15:48:02+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-12T15:48:07+03:00]sendsms.go:110 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-12T15:48:08+03:00]sendsms.go:240 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.sendSmsForConfirmation() map[error:message is denied error_code:6 id:24] 
+[36mINFO[0m[2025-02-12T17:58:00+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-12T17:58:27+03:00]sendsms.go:110 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-12T17:58:28+03:00]sendsms.go:240 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.sendSmsForConfirmation() map[error:message is denied error_code:6 id:25] 
+[36mINFO[0m[2025-02-12T18:01:30+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-12T18:06:16+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-12T18:13:24+03:00]main.go:58 main.start() Server started :8082                         
+[31mERRO[0m[2025-02-12T18:13:31+03:00]register.go:48 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.inputDataValidation() Некорректный номер телефона или пароль (проверьте длину): %!s(<nil>) 
+[31mERRO[0m[2025-02-12T18:14:19+03:00]register.go:48 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.inputDataValidation() Некорректный номер телефона или пароль (проверьте длину): %!s(<nil>) 
+[36mINFO[0m[2025-02-12T18:14:30+03:00]main.go:58 main.start() Server started :8082                         
+[31mERRO[0m[2025-02-12T18:14:32+03:00]register.go:49 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.inputDataValidation() Некорректный номер телефона или пароль (проверьте длину): %!s(<nil>) 
+[36mINFO[0m[2025-02-12T18:20:06+03:00]main.go:58 main.start() Server started :8082                         
+[31mERRO[0m[2025-02-12T18:20:08+03:00]register.go:37 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Register() Некорректный номер телефона или пароль (проверьте длину) 
+[36mINFO[0m[2025-02-12T18:25:28+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-12T18:27:46+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-12T18:28:02+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-12T18:29:31+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-12T18:30:01+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-12T18:30:35+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-12T18:35:38+03:00]main.go:58 main.start() Server started :8082                         
+[31mERRO[0m[2025-02-12T18:35:42+03:00]register.go:34 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Register() Неверный код подтверждения                   
+[31mERRO[0m[2025-02-12T18:35:58+03:00]register.go:34 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Register() Неверный код подтверждения                   
+[31mERRO[0m[2025-02-12T18:36:17+03:00]register.go:40 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Register() Некорректный номер телефона или пароль (проверьте длину) 
