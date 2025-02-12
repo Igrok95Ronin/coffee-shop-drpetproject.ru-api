@@ -255,3 +255,5 @@
 [31mERRO[0m[2025-02-12T21:33:38+03:00]register.go:51 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Register() <nil>                                        
 [36mINFO[0m[2025-02-12T21:34:21+03:00]main.go:58 main.start() Server started :8082                         
 [31mERRO[0m[2025-02-12T21:34:23+03:00]register.go:52 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Register() <nil>                                        
+[36mINFO[0m[2025-02-12T21:36:05+03:00]main.go:58 main.start() Server started :8082                         
+[31mERRO[0m[2025-02-12T21:36:07+03:00]register.go:51 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Register() Такой номер уже зарегистрирован:%!(EXTRA <nil>) 
