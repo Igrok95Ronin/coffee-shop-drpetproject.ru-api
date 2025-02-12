@@ -202,15 +202,16 @@ func generateVerificationCode() string {
 
 // Отправить смс для подтверждения
 func sendSmsForConfirmation(h *handler, w http.ResponseWriter, phoneNumber string) error {
-	login := h.cfg.SMSC.Login       // Ваш логин на SMSC.ru
-	password := h.cfg.SMSC.Password // Ваш пароль на SMSC.ru
+	login := h.cfg.SMSC.Login                      // Ваш логин на SMSC.ru
+	password := h.cfg.SMSC.Password                // Ваш пароль на SMSC.ru
+	verificationCode := generateVerificationCode() // Сгенерированный код
 
 	// Создаем параметры запроса
 	params := url.Values{}
 	params.Set("login", login)
 	params.Set("psw", password)
 	params.Set("phones", phoneNumber)
-	params.Set("mes", generateVerificationCode())
+	params.Set("mes", verificationCode)
 	params.Set("fmt", "3") // Формат ответа: 3 - JSON
 
 	// Отправляем POST-запрос к API SMSC.ru
@@ -238,5 +239,13 @@ func sendSmsForConfirmation(h *handler, w http.ResponseWriter, phoneNumber strin
 
 	h.logger.Info(result)
 
+	// Добавляет отправленный код в кэш на 1 час
+	addsSubmittedCodeCache(h, phoneNumber, verificationCode)
+
 	return nil
+}
+
+// Добавляет отправленный код в кэш на 1 час
+func addsSubmittedCodeCache(h *handler, phoneNumber, verificationCode string) {
+	h.rdb.Set(h.ctx, VERIFIED+phoneNumber, verificationCode, 1*time.Hour)
 }

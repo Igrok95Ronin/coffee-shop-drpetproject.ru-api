@@ -205,3 +205,9 @@
 [36mINFO[0m[2025-02-12T15:26:18+03:00]main.go:58 main.start() Server started :8082                         
 [36mINFO[0m[2025-02-12T15:26:20+03:00]sendsms.go:110 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
 [36mINFO[0m[2025-02-12T15:26:20+03:00]sendsms.go:241 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.sendSmsForConfirmation() map[error:message is denied error_code:6 id:21] 
+[36mINFO[0m[2025-02-12T15:28:00+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-12T15:28:03+03:00]sendsms.go:110 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-12T15:28:04+03:00]sendsms.go:239 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.sendSmsForConfirmation() map[error:message is denied error_code:6 id:22] 
+[36mINFO[0m[2025-02-12T15:40:38+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-12T15:40:44+03:00]sendsms.go:110 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-12T15:40:44+03:00]sendsms.go:240 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.sendSmsForConfirmation() map[error:message is denied error_code:6 id:23] 

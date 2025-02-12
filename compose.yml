@@ -40,3 +40,6 @@ volumes:
 networks:
   drpetproject-network:
     driver: bridge
+
+
+# docker exec -it redisCoffeeShop redis-cli -a redisCoffeeShopSuperPassword
