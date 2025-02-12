@@ -6,6 +6,7 @@ import (
 	"github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/models"
 	"github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/pkg/httperror"
 	"github.com/julienschmidt/httprouter"
+	"golang.org/x/crypto/bcrypt"
 	"html/template"
 	"net/http"
 	"regexp"
@@ -24,7 +25,7 @@ func (h *handler) Register(w http.ResponseWriter, r *http.Request, _ httprouter.
 
 	// Убираем пробелы и экранируем спец символы
 	var (
-		phoneNumber = template.HTMLEscapeString(strings.TrimSpace(register.PhoneNumber))
+		phoneNumber = formatPhoneNumber(template.HTMLEscapeString(strings.TrimSpace(register.PhoneNumber))) // Приводим номер к формату SMSC
 		code        = template.HTMLEscapeString(strings.TrimSpace(register.Code))
 		password    = template.HTMLEscapeString(strings.TrimSpace(register.Password))
 	)
@@ -41,15 +42,45 @@ func (h *handler) Register(w http.ResponseWriter, r *http.Request, _ httprouter.
 		return
 	}
 
-	fmt.Println("Форматированный номер для SMSC:", phoneNumber)
-	fmt.Println("Пароль:", password)
+	// Проверяем есть ли пользователь с таким номером в бд
+	exists, err := WeCheckThereUserWithThisNumber(h, phoneNumber)
+	if err != nil {
+		h.logger.Error(err)
+		return
+	} else if exists {
+		h.logger.Errorf("Такой номер уже зарегистрирован:", err)
+		httperror.WriteJSONError(w, "Такой номер уже зарегистрирован", err, http.StatusBadRequest)
+		return
+	}
 
+	// Хешируем пароль
+	hashedPassword, err := HashPassword(password)
+	if err != nil {
+		httperror.WriteJSONError(w, "Ошибка при хешировании пароля", err, http.StatusInternalServerError)
+		h.logger.Errorf("Ошибка при хешировании пароля: %s", err)
+		return
+	}
+
+	// Создаём объект нового пользователя
+	newUser := models.Users{
+		PhoneNumber:  phoneNumber,
+		PasswordHash: hashedPassword,
+	}
+
+	// Сохраняем пользователя в базе
+	if err = h.db.Create(&newUser).Error; err != nil {
+		httperror.WriteJSONError(w, "Ошибка при регистрации пользователя", err, http.StatusInternalServerError)
+		h.logger.Errorf("Ошибка при регистрации пользователя: %s", err)
+		return
+	}
+
+	// Отправляем ответ
+	w.WriteHeader(http.StatusCreated)
+	w.Write([]byte("Пользователь успешно зарегистрирован"))
 }
 
 // Проверка кода
 func checksTheCode(h *handler, w http.ResponseWriter, code, phoneNumber string) error {
-	// Приводим номер к формату SMSC
-	phoneNumber = formatPhoneNumber(phoneNumber)
 
 	// Получаем код и кеша
 	val, err := h.rdb.Get(h.ctx, VERIFIED+phoneNumber).Result()
@@ -93,4 +124,16 @@ func inputDataValidation(w http.ResponseWriter, phoneNumber, password string) er
 	}
 
 	return nil
+}
+
+//---------------------------------------------------------------------------------------
+//                                 УТИЛИТНЫЕ ФУНКЦИИ
+//---------------------------------------------------------------------------------------
+
+// HashPassword - хеширует пароль с помощью bcrypt (с cost = bcrypt.DefaultCost).
+func HashPassword(password string) (string, error) {
+	// bcrypt.GenerateFromPassword вернёт хеш пароля.
+	// bcrypt.DefaultCost по умолчанию равен 10 (можно увеличить, чтобы усложнить подбор).
+	bytes, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
+	return string(bytes), err
 }

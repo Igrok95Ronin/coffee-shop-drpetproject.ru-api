@@ -236,3 +236,22 @@
 [31mERRO[0m[2025-02-12T18:35:42+03:00]register.go:34 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Register() Неверный код подтверждения                   
 [31mERRO[0m[2025-02-12T18:35:58+03:00]register.go:34 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Register() Неверный код подтверждения                   
 [31mERRO[0m[2025-02-12T18:36:17+03:00]register.go:40 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Register() Некорректный номер телефона или пароль (проверьте длину) 
+[36mINFO[0m[2025-02-12T21:15:51+03:00]main.go:58 main.start() Server started :8082                         
+[31mERRO[0m[2025-02-12T21:15:58+03:00]register.go:34 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Register() Ошибка при получения кода из кеша            
+[31mERRO[0m[2025-02-12T21:16:13+03:00]register.go:34 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Register() Ошибка при получения кода из кеша            
+[36mINFO[0m[2025-02-12T21:16:23+03:00]sendsms.go:109 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-12T21:16:24+03:00]sendsms.go:239 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.sendSmsForConfirmation() map[error:message is denied error_code:6 id:26] 
+[31mERRO[0m[2025-02-12T21:16:29+03:00]register.go:34 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Register() Неверный код подтверждения                   
+[31mERRO[0m[2025-02-12T21:20:00+03:00]register.go:50 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Register() <nil>                                        
+[36mINFO[0m[2025-02-12T21:27:17+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-12T21:27:28+03:00]sendsms.go:109 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-12T21:27:29+03:00]sendsms.go:239 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.sendSmsForConfirmation() map[error:message is denied error_code:6 id:27] 
+[31mERRO[0m[2025-02-12T21:28:08+03:00]register.go:35 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Register() Неверный код подтверждения                   
+[36mINFO[0m[2025-02-12T21:29:52+03:00]sendsms.go:109 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-12T21:29:53+03:00]sendsms.go:239 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.sendSmsForConfirmation() map[error:message is denied error_code:6 id:28] 
+[31mERRO[0m[2025-02-12T21:32:06+03:00]register.go:51 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Register() <nil>                                        
+[31mERRO[0m[2025-02-12T21:32:58+03:00]register.go:51 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Register() <nil>                                        
+[31mERRO[0m[2025-02-12T21:33:06+03:00]register.go:35 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Register() Ошибка при получения кода из кеша            
+[31mERRO[0m[2025-02-12T21:33:38+03:00]register.go:51 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Register() <nil>                                        
+[36mINFO[0m[2025-02-12T21:34:21+03:00]main.go:58 main.start() Server started :8082                         
+[31mERRO[0m[2025-02-12T21:34:23+03:00]register.go:52 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Register() <nil>                                        

@@ -8,4 +8,5 @@ INSERT INTO users (phone_number, password_hash) VALUES
                                                                       ('+79990000006', 'hash6'),
                                                                       ('+79990000007', 'hash7'),
                                                                       ('+79990000008', 'hash8'),
-                                                                      ('+79990000009', 'hash9');
+                                                                      ('+79990000009', 'hash9'),
+                                                                      ('79320581041', 'hash8');
