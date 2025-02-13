@@ -34,6 +34,8 @@ func (h *handler) sendSMS(w http.ResponseWriter, r *http.Request, _ httprouter.P
 		return
 	}
 
+	fmt.Println("sms")
+
 	// Убираем пробелы и экранируем спец символы
 	var (
 		phoneNumber = template.HTMLEscapeString(strings.TrimSpace(smsRegUser.PhoneNumber))

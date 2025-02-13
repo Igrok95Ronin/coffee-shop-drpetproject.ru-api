@@ -33,14 +33,14 @@ func (h *handler) Login(w http.ResponseWriter, r *http.Request, _ httprouter.Par
 
 	// Ищем пользователя по номеру телефона в базе
 	if err := h.db.Where("phone_number = ?", phoneNumber).First(&users).Error; err != nil {
-		httperror.WriteJSONError(w, "Неверный номер телефона (такого пользователя нет в системе)", err, http.StatusUnauthorized)
+		httperror.WriteJSONError(w, "Неверный номер телефона (такого пользователя нет в системе)", err, http.StatusBadRequest)
 		h.logger.Errorf("Неверный номер телефона (такого пользователя нет в системе): %s", err)
 		return
 	}
 
 	// Проверяем пароль (сравниваем с хешем в базе)
 	if !CheckPasswordHash(password, users.PasswordHash) {
-		httperror.WriteJSONError(w, "Неверный пароль", nil, http.StatusUnauthorized)
+		httperror.WriteJSONError(w, "Неверный пароль", nil, http.StatusBadRequest)
 		h.logger.Errorf("Неверный пароль: %s", nil)
 		return
 	}
