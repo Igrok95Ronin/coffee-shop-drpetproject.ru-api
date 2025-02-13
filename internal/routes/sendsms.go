@@ -19,9 +19,10 @@ import (
 )
 
 const (
-	BLACKLIST = "blacklist:phone:"
-	ATTEMPTS  = "attempts:phone:"
-	VERIFIED  = "verified:phone:"
+	BLACKLIST              = "blacklist:phone:"
+	ATTEMPTS               = "attempts:phone:"
+	VERIFIED               = "verified:phone:"
+	sendSMSCooldownPattern = "sendSMS:cooldown:" // Ключ для блокировки повторной отправки
 )
 
 // Получить SMS
@@ -33,8 +34,6 @@ func (h *handler) sendSMS(w http.ResponseWriter, r *http.Request, _ httprouter.P
 		h.logger.Errorf("Ошибка декодирования в json: %s", err)
 		return
 	}
-
-	fmt.Println("sms")
 
 	// Убираем пробелы и экранируем спец символы
 	var (
@@ -57,6 +56,13 @@ func (h *handler) sendSMS(w http.ResponseWriter, r *http.Request, _ httprouter.P
 
 	// Приводим номер к формату SMSC
 	phoneNumber = formatPhoneNumber(phoneNumber)
+
+	// 1) Проверяем, не запрошен ли код для этого номера менее 5 минут назад
+	if err := h.checkSendSMSCooldown(phoneNumber); err != nil {
+		httperror.WriteJSONError(w, err.Error(), nil, http.StatusTooManyRequests)
+		h.logger.Error(err)
+		return
+	}
 
 	// Проверка в черном списке
 	if err := blacklistRedis(h, w, phoneNumber); err != nil {
@@ -81,6 +87,11 @@ func (h *handler) sendSMS(w http.ResponseWriter, r *http.Request, _ httprouter.P
 		return
 	}
 
+	// 2) Если отправка СМС прошла успешно, устанавливаем блокировку на 5 минут
+	if err := h.setSendSMSCooldown(phoneNumber, 5*time.Minute); err != nil {
+		h.logger.Errorf("Не удалось установить блокировку на отправку для номера %s: %v", phoneNumber, err)
+	}
+
 	w.WriteHeader(http.StatusOK)
 }
 
@@ -96,6 +107,34 @@ func formatPhoneNumber(phone string) string {
 		phone = "7" + phone[1:]
 	}
 	return phone
+}
+
+// Проверка, не находится ли номер в "режиме ожидания" перед повторной отправкой SMS
+func (h *handler) checkSendSMSCooldown(phoneNumber string) error {
+	rdb := h.rdb
+
+	// Проверяем, не существует ли ключ "sendSMS:cooldown:PHONE"
+	exists, err := rdb.Exists(h.ctx, sendSMSCooldownPattern+phoneNumber).Result()
+	if err != nil {
+		return fmt.Errorf("ошибка при проверке cooldown в Redis: %v", err)
+	}
+
+	// Если ключ уже есть, значит время "ожидания" ещё не истекло
+	if exists > 0 {
+		return fmt.Errorf("Вы можете запросить код подтверждения только 1 раз в 5 минут")
+	}
+
+	return nil
+}
+
+// Устанавливаем "cooldown" — чтобы нельзя было повторно отправить SMS в течение заданного времени
+func (h *handler) setSendSMSCooldown(phoneNumber string, duration time.Duration) error {
+	rdb := h.rdb
+
+	if err := rdb.Set(h.ctx, sendSMSCooldownPattern+phoneNumber, 1, duration).Err(); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Проверка в черном списке
