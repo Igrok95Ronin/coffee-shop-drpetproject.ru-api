@@ -36,5 +36,7 @@ func (h *handler) Routes(router *httprouter.Router) {
 	router.POST("/register", h.Register)
 	// Логин (получение access и refresh токенов)
 	router.POST("/login", h.Login)
+	// Обновление (refresh) токенов
+	router.POST("/refresh", h.Refresh)
 	router.GET("/", h.Home)
 }
