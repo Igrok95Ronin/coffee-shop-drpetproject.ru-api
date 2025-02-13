@@ -257,3 +257,10 @@
 [31mERRO[0m[2025-02-12T21:34:23+03:00]register.go:52 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Register() <nil>                                        
 [36mINFO[0m[2025-02-12T21:36:05+03:00]main.go:58 main.start() Server started :8082                         
 [31mERRO[0m[2025-02-12T21:36:07+03:00]register.go:51 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Register() Такой номер уже зарегистрирован:%!(EXTRA <nil>) 
+[36mINFO[0m[2025-02-12T21:43:35+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-12T21:56:58+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-13T09:35:11+03:00]main.go:58 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-13T09:44:32+03:00]main.go:58 main.start() Server started :8082                         
+[31mERRO[0m[2025-02-13T09:44:49+03:00]login.go:40 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Login() Неверный пароль: %!s(<nil>)                  
+[31mERRO[0m[2025-02-13T09:45:04+03:00]login.go:33 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Login() Неверный номер телефона (такого пользователя нет в системе): record not found 
+[36mINFO[0m[2025-02-13T09:47:13+03:00]main.go:58 main.start() Server started :8082                         

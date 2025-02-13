@@ -34,5 +34,7 @@ func (h *handler) Routes(router *httprouter.Router) {
 	router.POST("/send-sms", h.sendSMS) // Получить SMS
 	// Регистрация (создание нового пользователя)
 	router.POST("/register", h.Register)
+	// Логин (получение access и refresh токенов)
+	router.POST("/login", h.Login)
 	router.GET("/", h.Home)
 }
