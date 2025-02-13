@@ -17,3 +17,9 @@ curl -X POST http://localhost:8082/login \
 
 # Refresh
 curl -X POST http://localhost:8082/refresh
+
+# Protected
+curl -X POST http://localhost:8082/protected
+
+# Logout
+curl -X POST http://localhost:8082/logout

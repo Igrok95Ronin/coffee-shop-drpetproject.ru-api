@@ -47,6 +47,8 @@ func (h *handler) Routes(router *httprouter.Router) {
 	// Благодаря этому любой маршрут, который мы обернём AuthMiddleware,
 	// станет защищённым, и проверка access-токена будет выполняться автоматически.
 	router.GET("/protected", AuthMiddleware(h.Protected))
+	// Выход из системы
+	router.POST("/logout", h.Logout)
 	router.GET("/", h.Home)
 }
 
