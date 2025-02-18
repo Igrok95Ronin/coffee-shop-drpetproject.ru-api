@@ -577,3 +577,21 @@
 [31mERRO[0m[2025-02-17T20:47:42+03:00]refresh.go:21 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Необходим refresh_token (cookie отсутствует): http: named cookie not present 
 [31mERRO[0m[2025-02-17T20:47:47+03:00]refresh.go:21 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Необходим refresh_token (cookie отсутствует): http: named cookie not present 
 [31mERRO[0m[2025-02-17T20:48:47+03:00]login.go:44 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Login() Неверный пароль: %!s(<nil>)                  
+[36mINFO[0m[2025-02-18T13:51:03+03:00]main.go:60 main.start() Server started :8082                         
+[31mERRO[0m[2025-02-18T14:30:38+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-18T14:30:49+03:00]login.go:37 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Login() Неверный номер телефона (такого пользователя нет в системе): record not found 
+[36mINFO[0m[2025-02-18T14:30:56+03:00]sendsms.go:150 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-18T14:30:57+03:00]sendsms.go:280 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.sendSmsForConfirmation() map[cnt:1 id:46]                             
+[31mERRO[0m[2025-02-18T14:31:23+03:00]register.go:35 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Register() Неверный код подтверждения                   
+[36mINFO[0m[2025-02-18T14:43:54+03:00]main.go:60 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-18T14:53:04+03:00]main.go:60 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-18T14:54:40+03:00]main.go:60 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-18T14:55:12+03:00]main.go:60 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-18T14:57:14+03:00]main.go:60 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-18T14:59:06+03:00]main.go:60 main.start() Server started :8082                         
+[31mERRO[0m[2025-02-18T15:04:37+03:00]refresh.go:21 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Необходим refresh_token (cookie отсутствует): http: named cookie not present 
+[36mINFO[0m[2025-02-18T15:12:19+03:00]sendsms.go:150 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.blacklistRedis() Ответ от Redis:PONG                          
+[36mINFO[0m[2025-02-18T15:12:19+03:00]sendsms.go:280 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.sendSmsForConfirmation() map[cnt:1 id:47]                             
+[36mINFO[0m[2025-02-18T15:15:27+03:00]main.go:60 main.start() Server started :8082                         
+[31mERRO[0m[2025-02-18T15:16:10+03:00]sendsms.go:63 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).sendSMS() Вы можете запросить код подтверждения только 1 раз в 5 минут 
+[31mERRO[0m[2025-02-18T20:12:34+03:00]refresh.go:21 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Необходим refresh_token (cookie отсутствует): http: named cookie not present 
