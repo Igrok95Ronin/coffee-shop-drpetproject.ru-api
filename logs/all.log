@@ -595,3 +595,4 @@
 [36mINFO[0m[2025-02-18T15:15:27+03:00]main.go:60 main.start() Server started :8082                         
 [31mERRO[0m[2025-02-18T15:16:10+03:00]sendsms.go:63 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).sendSMS() Вы можете запросить код подтверждения только 1 раз в 5 минут 
 [31mERRO[0m[2025-02-18T20:12:34+03:00]refresh.go:21 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Необходим refresh_token (cookie отсутствует): http: named cookie not present 
+[36mINFO[0m[2025-02-18T20:17:28+03:00]main.go:60 main.start() Server started :8082                         
