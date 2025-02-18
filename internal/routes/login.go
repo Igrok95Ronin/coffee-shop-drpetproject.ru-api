@@ -92,8 +92,13 @@ func (h *handler) Login(w http.ResponseWriter, r *http.Request, _ httprouter.Par
 		// SameSite: http.SameSiteStrictMode,
 	})
 
-	w.WriteHeader(http.StatusOK)
-	w.Write([]byte("Авторизация прошла успешно"))
+	// Теперь возвращаем и роль
+	response := map[string]interface{}{
+		"message": "Авторизация прошла успешно",
+		"role":    users.Role,
+	}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(response)
 }
 
 // CheckPasswordHash - проверяет соответствие "сырого" пароля и хеша.
