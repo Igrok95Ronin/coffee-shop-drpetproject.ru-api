@@ -49,7 +49,7 @@ func (h *handler) sendSMS(w http.ResponseWriter, r *http.Request, _ httprouter.P
 
 	// Проверяем номер телефона
 	if !phoneRegex.MatchString(phoneNumber) {
-		httperror.WriteJSONError(w, "Некорректный формат номера телефона. Используйте +7XXXXXXXXXX или 8XXXXXXXXXX", nil, http.StatusBadRequest)
+		httperror.WriteJSONError(w, "Некорректный формат номера телефона. Используйте 7XXXXXXXXXX или 8XXXXXXXXXX", nil, http.StatusBadRequest)
 		h.logger.Errorf("Некорректный номер телефона: %s", phoneNumber)
 		return
 	}
