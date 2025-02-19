@@ -596,3 +596,48 @@
 [31mERRO[0m[2025-02-18T15:16:10+03:00]sendsms.go:63 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).sendSMS() Вы можете запросить код подтверждения только 1 раз в 5 минут 
 [31mERRO[0m[2025-02-18T20:12:34+03:00]refresh.go:21 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Необходим refresh_token (cookie отсутствует): http: named cookie not present 
 [36mINFO[0m[2025-02-18T20:17:28+03:00]main.go:60 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-18T20:32:51+03:00]main.go:60 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-19T09:02:08+03:00]main.go:60 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-19T09:51:50+03:00]main.go:60 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-19T09:52:56+03:00]main.go:60 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-19T09:55:27+03:00]main.go:60 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-19T09:56:42+03:00]main.go:60 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-19T09:57:08+03:00]main.go:60 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-19T09:58:54+03:00]main.go:60 main.start() Server started :8082                         
+[31mERRO[0m[2025-02-19T10:24:30+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T10:28:02+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T10:29:06+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T10:29:42+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T10:30:53+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T10:31:26+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T10:31:52+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T10:33:58+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T10:35:33+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T10:38:34+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T10:40:45+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T10:41:15+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T10:42:45+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T10:43:09+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T10:43:43+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T10:44:01+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T10:44:18+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T10:53:55+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T11:02:08+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T11:08:17+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T11:09:22+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T11:29:03+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T11:51:30+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T13:04:36+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T13:05:29+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T13:06:24+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T13:06:31+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T13:06:35+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T13:08:22+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T13:08:52+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T13:09:33+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T13:09:57+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T13:10:38+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T13:18:52+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[31mERRO[0m[2025-02-19T13:19:20+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
+[36mINFO[0m[2025-02-19T13:19:43+03:00]main.go:60 main.start() Server started :8082                         
+[31mERRO[0m[2025-02-19T13:19:46+03:00]refresh.go:38 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Refresh() Пользователь не найден: record not found     
