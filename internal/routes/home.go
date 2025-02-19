@@ -2,11 +2,10 @@ package routes
 
 import (
 	"encoding/json"
-	"net/http"
-	"strconv"
-
 	"github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/models"
 	"github.com/julienschmidt/httprouter"
+	"net/http"
+	"strconv"
 )
 
 func (h *handler) Home(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {

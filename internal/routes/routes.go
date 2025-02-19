@@ -54,7 +54,10 @@ func (h *handler) Routes(router *httprouter.Router) {
 
 	// Выход из системы
 	router.POST("/logout", h.Logout)
+
 	router.GET("/", h.Home)
+	router.GET("/search", h.Search) // Поиск
+
 	// Пример маршрута для добавления товара (только для админов)
 	router.POST("/add-product", AuthMiddleware(RoleMiddleware("admin", h.AddProduct)))
 }
