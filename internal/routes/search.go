@@ -2,13 +2,18 @@ package routes
 
 import (
 	"encoding/json"
+	"fmt"
+	"html/template"
+	"net/http"
+	"net/url"
+	"strconv"
+	"strings"
+	"time"
+
 	"github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/models"
 	"github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/pkg/httperror"
 	"github.com/julienschmidt/httprouter"
-	"html/template"
-	"net/http"
-	"strconv"
-	"strings"
+	"github.com/redis/go-redis/v9"
 )
 
 // Search - обработчик для поиска товаров с ленивой загрузкой и подсчётом total
@@ -17,7 +22,7 @@ func (h *handler) Search(w http.ResponseWriter, r *http.Request, _ httprouter.Pa
 	query := template.HTMLEscapeString(strings.TrimSpace(r.URL.Query().Get("q")))
 
 	// Проверяем длину запроса, чтобы избежать слишком коротких запросов
-	if query == "" || len(query) < 3 {
+	if len(query) < 3 {
 		httperror.WriteJSONError(w, "Запрос поиска должен быть минимум 3 символа", nil, http.StatusBadRequest)
 		h.logger.Error("Запрос поиска должен быть минимум 3 символа")
 		return
@@ -33,6 +38,37 @@ func (h *handler) Search(w http.ResponseWriter, r *http.Request, _ httprouter.Pa
 	if err != nil || offset < 0 {
 		offset = 0 // Начинаем с первой записи
 	}
+
+	// Генерируем ключ для Redis
+	redisKey := generateSearchKey(query, limit, offset)
+
+	// 1) Проверяем в Redis
+	cachedData, err := h.rdb.Get(h.ctx, redisKey).Result()
+	if err == nil && cachedData != "" {
+		// Если в Redis нашлись данные
+		h.logger.Infof("Найден кэш для ключа: %s", redisKey)
+
+		// Декодируем JSON из Redis
+		var cachedResponse map[string]interface{}
+		if err = json.Unmarshal([]byte(cachedData), &cachedResponse); err == nil {
+			// Обновляем TTL (продлеваем жизнь ключа на 3 минуту)
+			h.rdb.Expire(h.ctx, redisKey, 3*time.Minute)
+
+			// Отправляем уже закэшированный ответ
+			h.writeJSONResponse(w, http.StatusOK, cachedResponse)
+			return
+		} else {
+			h.logger.Errorf("Ошибка декодирования кэша JSON: %v", err)
+			// Если декодировать не получилось, продолжаем запрос в БД
+		}
+	} else if err != nil && err != redis.Nil {
+		// Любая ошибка отличная от "нет такого ключа" -> логируем
+		h.logger.Errorf("Ошибка при GET из Redis: %v", err)
+		// Не выходим, всё равно идём в БД
+	}
+
+	// 2) Если нет в Redis или ошибка — делаем запрос в БД
+	h.logger.Infof("Кэш не найден, идём в БД: key=%s", redisKey)
 
 	// Формируем строку для LIKE-запроса (поиск без учёта регистра)
 	likeQuery := "%" + strings.ToLower(query) + "%"
@@ -51,7 +87,7 @@ func (h *handler) Search(w http.ResponseWriter, r *http.Request, _ httprouter.Pa
 	var products []models.Products
 	if err := h.db.
 		Where("LOWER(name) ILIKE ?", likeQuery).
-		Order("id DESC"). // Сортируем по ID в обратном порядке
+		Order("id DESC").
 		Limit(limit).
 		Offset(offset).
 		Find(&products).Error; err != nil {
@@ -66,13 +102,32 @@ func (h *handler) Search(w http.ResponseWriter, r *http.Request, _ httprouter.Pa
 		"total":    total,    // Общее количество всех найденных товаров
 	}
 
-	// Устанавливаем заголовки и код ответа
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
+	// 3) Сохраняем результат в Redis на 1 минуту
+	if dataBytes, err := json.Marshal(response); err == nil {
+		errSet := h.rdb.Set(h.ctx, redisKey, string(dataBytes), 1*time.Minute).Err()
+		if errSet != nil {
+			h.logger.Errorf("Ошибка при сохранении кэша в Redis: %v", errSet)
+		}
+	} else {
+		h.logger.Errorf("Ошибка при маршалинге ответа для Redis: %v", err)
+	}
 
-	// Кодируем и отправляем JSON-ответ
-	if err := json.NewEncoder(w).Encode(response); err != nil {
-		h.logger.Error("Ошибка при кодировании JSON:", err)
-		http.Error(w, "Ошибка формирования ответа", http.StatusInternalServerError)
+	// 4) Возвращаем клиенту
+	h.writeJSONResponse(w, http.StatusOK, response)
+}
+
+// Вспомогательная функция для генерации уникального ключа
+func generateSearchKey(q string, limit, offset int) string {
+	// Можно URL-энкодить q, если опасаемся спецсимволов
+	encodedQ := url.QueryEscape(strings.ToLower(q))
+	return fmt.Sprintf("search:%s:%d:%d", encodedQ, limit, offset)
+}
+
+// Функция для записи JSON-ответа
+func (h *handler) writeJSONResponse(w http.ResponseWriter, code int, data interface{}) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(code)
+	if err := json.NewEncoder(w).Encode(data); err != nil {
+		h.logger.Errorf("Ошибка при кодировании JSON: %v", err)
 	}
 }
