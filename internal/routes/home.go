@@ -3,6 +3,7 @@ package routes
 import (
 	"encoding/json"
 	"github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/models"
+	"github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/pkg/httperror"
 	"github.com/julienschmidt/httprouter"
 	"net/http"
 	"strconv"
@@ -32,6 +33,6 @@ func (h *handler) Home(w http.ResponseWriter, r *http.Request, _ httprouter.Para
 	// Отправляем JSON-ответ
 	if err := json.NewEncoder(w).Encode(products); err != nil {
 		h.logger.Error("Ошибка при кодировании JSON:", err)
-		http.Error(w, "Ошибка формирования ответа", http.StatusInternalServerError)
+		httperror.WriteJSONError(w, "Ошибка формирования ответа", err, http.StatusInternalServerError)
 	}
 }

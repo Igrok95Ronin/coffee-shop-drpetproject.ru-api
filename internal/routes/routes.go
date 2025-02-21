@@ -58,6 +58,7 @@ func (h *handler) Routes(router *httprouter.Router) {
 	router.GET("/", h.Home)
 	router.GET("/search", h.Search)       // Поиск
 	router.GET("/product/:id", h.Product) // Показать продукт
+	router.GET("/basket", h.Basket)       // Корзина
 
 	// Пример маршрута для добавления товара (только для админов)
 	router.POST("/add-product", AuthMiddleware(RoleMiddleware("admin", h.AddProduct)))

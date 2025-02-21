@@ -104,7 +104,7 @@ func (h *handler) Search(w http.ResponseWriter, r *http.Request, _ httprouter.Pa
 
 	// 3) Сохраняем результат в Redis на 1 минуту
 	if dataBytes, err := json.Marshal(response); err == nil {
-		errSet := h.rdb.Set(h.ctx, redisKey, string(dataBytes), 1*time.Minute).Err()
+		errSet := h.rdb.Set(h.ctx, redisKey, string(dataBytes), 3*time.Minute).Err()
 		if errSet != nil {
 			h.logger.Errorf("Ошибка при сохранении кэша в Redis: %v", errSet)
 		}

@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/config"
+	"github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/middleware"
 	"github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes"
 	"github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/pkg/logging"
 	"github.com/julienschmidt/httprouter"
@@ -40,7 +41,8 @@ func main() {
 	handler := routes.NewHandler(cfg, logger, db, ctx, rdb)
 	handler.Routes(router)
 
-	corsHandler := routes.CorsSettings().Handler(router)
+	//middleware:  Cors, Tracing and Context
+	corsHandler := routes.CorsSettings().Handler(middleware.TracingMiddleware(middleware.RequestContext(router)))
 
 	start(corsHandler, cfg, logger)
 }
