@@ -9,6 +9,10 @@ import (
 
 // Корзина
 func (h *handler) Basket(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+
+	// Используем контекст из middleware
+	ctx := r.Context()
+
 	type inCard struct {
 		Name   string  `json:"name"`
 		ImgSrc string  `json:"imgSrc"`
@@ -17,8 +21,8 @@ func (h *handler) Basket(w http.ResponseWriter, r *http.Request, _ httprouter.Pa
 
 	var products []inCard
 
-	// Используем контекст из middleware
-	ctx := r.Context()
+	// Количество записей
+	h.db.WithContext(ctx)
 
 	// Запрос к БД
 	if err := h.db.WithContext(ctx).

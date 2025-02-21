@@ -938,3 +938,12 @@
 [36mINFO[0m[2025-02-21T15:54:42+03:00]search.go:49 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Search() Найден кэш для ключа: search:milk:24:0       
 [36mINFO[0m[2025-02-21T15:54:43+03:00]search.go:49 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Search() Найден кэш для ключа: search:milk:24:0       
 [36mINFO[0m[2025-02-21T15:54:45+03:00]search.go:49 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Search() Найден кэш для ключа: search:milk:24:0       
+[36mINFO[0m[2025-02-21T15:56:22+03:00]main.go:62 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-21T15:56:24+03:00]search.go:49 github.com/Igrok95Ronin/coffee-shop-drpetproject.ru-api.git/internal/routes.(*handler).Search() Найден кэш для ключа: search:milk:24:0       
+[36mINFO[0m[2025-02-21T15:56:24+03:00]tracing.go:16 main.main.TracingMiddleware.func2.1() GET /search выполнен за 8.1076ms             
+[36mINFO[0m[2025-02-21T16:13:18+03:00]main.go:62 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-21T16:13:20+03:00]tracing.go:16 main.main.TracingMiddleware.func2.1() GET /basket выполнен за 19.2426ms            
+[36mINFO[0m[2025-02-21T16:16:40+03:00]main.go:62 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-21T16:16:41+03:00]tracing.go:16 main.main.TracingMiddleware.func2.1() GET /basket выполнен за 13.1303ms            
+[36mINFO[0m[2025-02-21T16:17:59+03:00]main.go:62 main.start() Server started :8082                         
+[36mINFO[0m[2025-02-21T16:18:00+03:00]tracing.go:16 main.main.TracingMiddleware.func2.1() GET /basket выполнен за 12.2668ms            
